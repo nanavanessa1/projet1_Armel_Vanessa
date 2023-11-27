@@ -1,6 +1,6 @@
 <h2>Se Connecter</h2>
 <a href ="../">Accueil</a>
-<a href ="./signUp">s'enregistrer</a>
+
 <form action="../results/loginResult.php" method="post">
     
     <label for ="user_name"> user name</label>
@@ -10,7 +10,7 @@
     <label for ="pwd"> Password</label>
     <input id="pwd" type="text" name="pwd" value=""></br>
     <div class="mb-3">
-    <label class="form-label">Not a Member?</label><a href="Inscription.php"
+    <label class="form-label">Not a Member?</label><a href="signUp.php"
     style="color: navy; font-weight:bold; text-decoration:none;">
     Register Now</a>
     </div>
