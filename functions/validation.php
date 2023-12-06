@@ -7,7 +7,7 @@ function usernameIsValid(string $username): array
 
     ];
 
-    $userInDB = getUserByUsername($username);
+    //$userInDB = getUserByUsername($username);
 
     if (strlen($username) < 2) {
         $result = [
@@ -30,6 +30,30 @@ function usernameIsValid(string $username): array
     return $result;
 }
 
+function lnameIsValid($lname)
+{ 
+    
+    $result = [
+        'isValid' => true,
+        'msg' => ''
+
+    ];
+    if (strlen($lname) < 2) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le Prenom utilisé est trop court'
+
+        ];
+    } elseif (strlen($lname) > 20) {
+        $result = [
+            'isValid' => false,
+            'msg' => 'Le nom utilisé est trop long'
+
+        ];
+    } 
+    return $result;
+    
+}
 function emailIsValid($email)
 {
 

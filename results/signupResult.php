@@ -2,8 +2,8 @@
 <?php
 require_once '../functions/validation.php';
 require_once '../functions/userCrud.php';
-require_once '../functions/functions.php';
-require_once '../utils/connexion.php';
+//require_once '../functions/functions.php';
+//require_once '../utils/connexion.php';
 session_start();
 
 // Todo : valider les données de mon form 
