@@ -1,94 +1,159 @@
-<?php
-function usernameIsValid(string $username): array
+<?php    
+
+
+
+function userNameIsValid($data)
 {
-    $result = [
-        'isValid' => true,
-        'msg' => ''
+    $length = strlen($data);
+    $userInDB = getUserByUsername($data);
 
+    $reponse=[
+        "is valid"=> true,
+        "message"=> "",
     ];
-
-    //$userInDB = getUserByUsername($username);
-
-    if (strlen($username) < 2) {
-        $result = [
-            'isValid' => false,
-            'msg' => 'Le nom utilisé est trop court'
-
+    if($length<3){
+        $reponse=[
+            "is valid"=> false,
+            "message"=> "le nom d utilisateur est trop court ",
         ];
-    } elseif (strlen($username) > 20) {
-        $result = [
-            'isValid' => false,
-            'msg' => 'Le nom utilisé est trop long'
 
-        ];
-    } elseif ($userInDB) {
-        $result = [
-            'isValid' => false,
-            'msg' => 'Le nom est déjà utilisé'
-        ];
-    }
-    return $result;
-}
 
-function lnameIsValid($lname)
-{ 
+    }elseif($length>50) {
+        $reponse=[
+            "is valid"=> false,
+            "message"=> "le le nom d utilisateurS est trop long ",
+        ];
+   
+    }elseif ($userInDB) {
+        $reponse = [
+            'isValid' => false,
+            'message' => 'Le nom est déjà utilisé'
+        ];
     
-    $result = [
-        'isValid' => true,
-        'msg' => ''
+    }
+    return $reponse;
+}
 
+function nameIsValid($Name)
+{
+    $length = strlen($Name);
+    $reponse=[
+        "is valid"=> true,
+        "message"=> "",
     ];
-    if (strlen($lname) < 2) {
-        $result = [
-            'isValid' => false,
-            'msg' => 'Le Prenom utilisé est trop court'
-
+    if($length<3){
+        $reponse=[
+            "is valid"=> false,
+            "message"=> "le nom  est trop court ",
         ];
-    } elseif (strlen($lname) > 20) {
-        $result = [
-            'isValid' => false,
-            'msg' => 'Le nom utilisé est trop long'
 
+
+    }/*elseif($length>50) {
+        $reponse=[
+            "is valid"=> false,
+            "message"=> "le nom est trop long ",
         ];
-    } 
-    return $result;
+   
+    }*/
+    return $reponse;
+}
+
+function f_NameIsValid($fName)
+{
+    $length = strlen($fName);
+    $reponse=[
+        "is valid"=> true,
+        "message"=> "",
+    ];
+    if($length<3){
+        $reponse=[
+            "is valid"=> false,
+            "message"=> "le prenom est trop court ",
+        ];
+
+
+    }elseif($length>50) {
+        $reponse=[
+            "is valid"=> false,
+            "message"=> "le prenom  est trop long ",
+        ];
+   
+    }
+    return $reponse;
+}
+
+function EmailIsValid($email)
+{
+  
+    
+    $reponse=[
+        "is valid"=> true,
+        "message"=> "",
+    ];
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $reponse=[
+            "is valid"=> true,
+            "message"=>  "L'adresse email '$email' est considérée comme  valide."
+        ];
+
+
+    }else
+    {
+        $reponse=[
+            "is valid"=> false,
+            "message"=>  "L'adresse email '$email' est considérée comme  invalide."
+        ];
+
+    };
+   
+    
+    return $reponse;
+}
+
+function pwdIsValid($pwd)
+{
+    $caracteres='/[^\w\s]/';
+    if(preg_match($caracteres,$pwd))
+    {
+        $reponse=[
+            "is valid"=> true,
+            "message"=>  ""
+        ];
+
+    }else
+    {
+        $reponse=[ 
+            "is valid"=> false ,
+            "message"=>  "Le mot de passe doit avoir des caracteres speciaux."
+        ];
+
     
 }
-function emailIsValid($email)
-{
 
-    $email_validation_regex = "/^[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/";
-    if (!preg_match($email_validation_regex, $email)) {
-        return [
-            'isValid' => false,
-            'msg' => "Format d'email invalid",
-        ];
-    }
-    return [
-        'isValid' => true,
-        'msg' => '',
-    ];
+return $reponse;
+
+
 }
 
-function pwdLenghtValidation($pwd)
-{
-    //minimum 6 max 16
-    $length = strlen($pwd);
-
-    if ($length < 6) {
-        return [
-            'isValid' => false,
-            'msg' => 'Votre mot de passe est trop court. Doit être supérieur a 8 caractères'
+function userNameExist($data){
+    $userInDB = getUserByUsername($data);
+    $reponse = [
+        'exist'=>false,   
+        'message' => 'ce User_name n existe pas '
+    ];
+    if ($userInDB) {
+        $reponse = [
+            'exist'=>true,
+            'message' => ''
         ];
-    } elseif ($length > 16) {
-        return [
-            'isValid' => false,
-            'msg' => 'Votre mot de passe est trop long. Doit être inférieur a 16 caractères'
+    }else{
+        $reponse = [
+            'exist'=>false,
+            'message' => 'ce User_name n existe pas '
         ];
     }
-    return [
-        'isValid' => true,
-        'msg' => ''
-    ];
+
+return $reponse;
 }
+
 ?>
