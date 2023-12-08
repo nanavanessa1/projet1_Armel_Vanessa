@@ -21,7 +21,7 @@ function userNameIsValid($data)
     }elseif($length>50) {
         $reponse=[
             "is valid"=> false,
-            "message"=> "le le nom d utilisateurS est trop long ",
+            "message"=> " le nom d utilisateur est trop long ",
         ];
    
     }elseif ($userInDB) {
@@ -48,13 +48,13 @@ function nameIsValid($Name)
         ];
 
 
-    }/*elseif($length>50) {
+    }elseif($length>50) {
         $reponse=[
             "is valid"=> false,
             "message"=> "le nom est trop long ",
         ];
    
-    }*/
+    }
     return $reponse;
 }
 

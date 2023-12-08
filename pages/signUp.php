@@ -1,57 +1,108 @@
-<?php
+<?php 
 session_start();
-var_dump($_SESSION);
-$user_name = '';
-if (isset($_SESSION['signup_form']['user_name'])) {
-    $user_name = $_SESSION['signup_form']['user_name'];
+$userName='';
+if(isset($_SESSION['form_signup']['user_name']))
+{
+    $userName=$_SESSION['form_signup']['user_name'];
 }
-$fname = '';
-if (isset($_SESSION['signup_form']['fname'])) {
-    $user_name = $_SESSION['signup_form']['fname'];
+$name='';
+if(isset($_SESSION['form_signup']['name']))
+{
+    $name=$_SESSION['form_signup']['name'];
 }
-$lname = '';
-if (isset($_SESSION['signup_form']['lname'])) {
-    $user_name = $_SESSION['signup_form']['lname'];
+$fname='';
+if(isset($_SESSION['form_signup']['name']))
+{
+    $fname=$_SESSION['form_signup']['first_name'];
 }
-$email = '';
-if (isset($_SESSION['signup_form']['email'])) {
-    $email = $_SESSION['signup_form']['email'];
+$email='';
+if(isset($_SESSION['form_signup']['email']))
+{
+    $email=$_SESSION['form_signup']['email'];
 }
-$pwd = '';
-if (isset($_SESSION['signup_form']['pwd'])) {
-    $pwd = $_SESSION['signup_form']['pwd'];
+$pwd='';
+if(isset($_SESSION['form_signup']['pwd']))
+{
+    $pwd=$_SESSION['form_signup']['pwd'];
 }
+
+
+
+
 ?>
-<h2>Enregistrement<h2>
-    <a href= "../"> Accueil</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/registre.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<header>
+    <h2 class="logo">logo</h2>
+    <nav class="navigation">
+        <a href="#">home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">contact</a>
+        <a href="./login.php"><button class="btnLogin-popup">login</button></a>
+
+
+
+    </nav>
+</header>
+<div class="wrapper">
+    <div class="form-box-login">
+        <h2>Enregistrement</h2>
+<form action="../results/signupResult.php" method="post">
 <div>
-    <form action="../results/signupResult.php" method="post"> 
-    <label for ="user_name"> user name</label>
-    <input id="user_name" type="text" name="user_name" value="">
-    <p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['signup_errors']['user_name'])? $_SESSION['signup_errors']['user_name'] : '' ?></p>
+
+
+<input type="text" name="user_name" id="user_name" value=" <?php echo $userName ?> "> 
+<i class='bx bxs-user'></i>
+<p style="color: red; font-size: 0.8rem;"> <?php echo  isset($_SESSION['errors']['user_name'])? $_SESSION['errors']['user_name'] : '' ?></p>
+
+
 </div>
 <div>
-<label for ="fname"> First name</label>
-    <input id="fname" type="text" name="fname" value="">
-    <p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['signup_errors']['first_name'])? $_SESSION['signup_errors']['first_name'] : '' ?></p>
+<label for="name">Nom</label>
+<input type="text" name="name" id="name" value="<?php echo $name ?>"> 
+<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['name'])? $_SESSION['errors']['name'] : '' 
+
+?></p>
+
+
 </div>
 <div>
-    <label for ="lname"> Last name</label>
-    <input id="lname" type="text" name="lname" value="">
-    <p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['signup_errors']['lname'])? $_SESSION['signup_errors']['lname'] : '' ?></p>
+<label for="first_name">Prenom</label>
+<input type="text" name="first_name" id="first_name" value="<?php echo $fname ?>"> 
+<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['lname'])? $_SESSION['errors']['lname'] : '' ?></p>
+
 </div>
 <div>
-    <label for ="email"> Email</label>
-    <input id="email" type="text" name="email" value="">
-    <p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['signup_errors']['user_name'])? $_SESSION['signup_errors']['email'] : '' ?></p>
+<label for="email">Email</label>
+<input type="text" name="email" id="email" value="<?php echo $email ?>"> 
+<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['email'])? $_SESSION['errors']['email'] : '' ?></p>
+
+
 </div>
 <div>
-    <label for ="pwd"> Password</label>
-    <input id="pwd" type="text" name="pwd" value="">
-    <p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['signup_errors']['user_name'])? $_SESSION['signup_errors']['pwd'] : '' ?></p>
+<label for="pwd">mot de passe </label>
+<input type="password" name="pwd" id="pwd" value="<?php echo $pwd ?>"> 
+<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['pwd'])? $_SESSION['errors']['pwd'] : '' ?></p>
+
+
 </div>
-    
-    <button type="submit" > S'enregistrer</button>
+<div>
+    <button type="submit"> Enregistrer</button>
+</div>
 </form>
-<div>
 </div>
+</div>
+
+    
+</body>
+</html>
