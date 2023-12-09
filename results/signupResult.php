@@ -1,9 +1,10 @@
 <a href="../">Accueil</a>
 <?php
-require_once('../functions/function.php');
+require_once('../functions/functions.php');
 require_once('../functions/usercrud.php');
 require_once('../functions/validation.php');
 require_once('../utils/connexion.php');
+//require_once('../templates/footer.php');
 session_start();
 
 

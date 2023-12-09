@@ -1,5 +1,8 @@
 <?php
+// require_once('../templates/footer.php');
+
 session_start()
+
 
 ?>
 
@@ -36,8 +39,9 @@ session_start()
     <div class="remember-forgot">
         <label> <input type="checkbox"/> Remember me </label>
         <a href="#"> Forgot password</a>
-    <br><button type="submit" class="btn">login</button>
-    
+    <br><button type="submit" class="btn">login</button> 
+   <!-- <a href="./loginResult.php"><button class="btnLogin-popup">login</button></a> -->
+
     </div>
     <div class="register-link">
         <p>Don't have an account ?<a href="./signUp.php">register</a></p>

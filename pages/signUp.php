@@ -42,13 +42,13 @@ if(isset($_SESSION['form_signup']['pwd']))
 <body>
 
 <header>
-    <h2 class="logo">logo</h2>
+    <h2 class="logo"> VANS LUXURY SHOES </h2>
     <nav class="navigation">
         <a href="#">home</a>
         <a href="#">About</a>
-        <a href="#">Services</a>
+        <a href="#">Profils</a>
         <a href="#">contact</a>
-        <a href="./login.php"><button class="btnLogin-popup">login</button></a>
+        <a href="./loginUp.php"><button class="btnLogin-popup">login</button></a>
 
 
 

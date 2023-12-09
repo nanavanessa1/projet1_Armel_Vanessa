@@ -2,7 +2,7 @@
 function createUser($data)
 {
 
-    var_dump("Je suis dans create user");
+    var_dump("la fonction create user marche");
     
     global $conn;
     
@@ -10,7 +10,7 @@ function createUser($data)
 
 $stmt = mysqli_prepare($conn, $query);
 var_dump($stmt);
-printf("Error message: %s\n", mysqli_error($conn));    
+//printf("Error message: %s\n", mysqli_error($conn));    
 
 if ($stmt) {
         
@@ -26,8 +26,9 @@ if ($stmt) {
 
         $result = mysqli_stmt_execute($stmt);
         
-          return 'bien';
-    }else{return 'mal';}
+          return 'Ca fonctionne!!!!!!!!!!';
+    }
+    else{return 'Dommage!!! ca marche pas ';}
 }
 function getUserByUsername( $user_name)
 {
@@ -58,5 +59,11 @@ function updateUser($data){
     var_dump($result);
     echo "<br>";
     }}
+
+
+    //products
+    
+
+
 
 ?>

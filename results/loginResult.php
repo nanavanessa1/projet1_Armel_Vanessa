@@ -56,10 +56,10 @@ if (isset($_POST)){
                     'user_name' => $userName['message'],
                     'pwd' => 'mot de passe incorrect '];
                     
-                    $url='../pages/login.php';
+                    $url='../pages/loginUp.php';
                     header('location:'.$url);
 
-            // echo "C'est pas  le bon mdp ";
+            
             
             }
         }
@@ -68,12 +68,12 @@ if (isset($_POST)){
             'user_name' => $userName['message'],
              'pwd' => 'mot de passe incorrect '];
         
-            $url='../pages/login.php';
+            $url='../pages/loginUp.php';
             header('location:'.$url);
     }
 } else{
    
-    $url='../pages/login.php';
+    $url='../pages/loginUp.php';
     header('location:'.$url);
 }
 

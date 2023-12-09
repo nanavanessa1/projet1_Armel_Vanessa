@@ -14,14 +14,14 @@ function userNameIsValid($data)
     if($length<3){
         $reponse=[
             "is valid"=> false,
-            "message"=> "le nom d utilisateur est trop court ",
+            "message"=> "le nom  utilisateur est  court ",
         ];
 
 
     }elseif($length>50) {
         $reponse=[
             "is valid"=> false,
-            "message"=> " le nom d utilisateur est trop long ",
+            "message"=> " le nom  utilisateur est  long ",
         ];
    
     }elseif ($userInDB) {
@@ -44,14 +44,14 @@ function nameIsValid($Name)
     if($length<3){
         $reponse=[
             "is valid"=> false,
-            "message"=> "le nom  est trop court ",
+            "message"=> "le nom  est  court ",
         ];
 
 
     }elseif($length>50) {
         $reponse=[
             "is valid"=> false,
-            "message"=> "le nom est trop long ",
+            "message"=> "le nom est  long ",
         ];
    
     }
@@ -68,7 +68,7 @@ function f_NameIsValid($fName)
     if($length<3){
         $reponse=[
             "is valid"=> false,
-            "message"=> "le prenom est trop court ",
+            "message"=> "le prenom est court ",
         ];
 
 
@@ -93,7 +93,7 @@ function EmailIsValid($email)
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
         $reponse=[
             "is valid"=> true,
-            "message"=>  "L'adresse email '$email' est considérée comme  valide."
+            "message"=>  "L'adresse email '$email' est considérée comme  correct."
         ];
 
 
@@ -101,7 +101,7 @@ function EmailIsValid($email)
     {
         $reponse=[
             "is valid"=> false,
-            "message"=>  "L'adresse email '$email' est considérée comme  invalide."
+            "message"=>  "L'adresse email '$email' est considérée comme  fausse."
         ];
 
     };
@@ -149,7 +149,7 @@ function userNameExist($data){
     }else{
         $reponse = [
             'exist'=>false,
-            'message' => 'ce User_name n existe pas '
+            'message' => 'ce User_name nexiste pas '
         ];
     }
 
