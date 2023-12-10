@@ -62,8 +62,43 @@ function updateUser($data){
 
 
     //products
-    
+    function ajouter($image_url,$nom,$prix,$desc,$quantity)
+    {
+       if (require("./utils/connexion.php"))
+       {
+         $req=$conn->prepare("INSERT INTO product (name ,quantity,price,image_url,description) VALUES ($image_url,$nom,$prix,$desc,$quantity)")
 
+         $req->execute(array($image_url,$nom,$prix,$desc,$quantity));
+
+         $req->closeCursor();
+      
+        }
+
+    }
+
+     function afficher()
+     {
+        if (require("./utils/connexion.php"))
+    {
+        $req=$conn->prepare("SELECT * FROM products order by id DESC")
+   
+        $req->execute();
+
+        $data =$req->fetchAll(PDO::FETCH_OBJ);
+        // Recuperatio des donnes sur forme d'objet
+        return $data;
+
+        $req->closeCursor();
+    }
+
+
+     }
+     function supprimer($id)
+     {
+        if (require("./utils/connexion.php"))
+        $req=$conn->prepare("DELETE  FROM product where id=?") ;
+        $req->execute(array($id));
+     }
 
 
 ?>
