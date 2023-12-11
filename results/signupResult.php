@@ -16,12 +16,12 @@ $userName=userNameIsValid($_POST["user_name"]);
 $name=NameIsValid($_POST["name"]);
 $f_name= f_NameIsValid($_POST["first_name"]);
 $email=EmailIsValid($_POST["email"]);
-$password=pwdIsValid($_POST["pwd"]);
+$pwd=pwdIsValid($_POST["pwd"]);
  var_dump($userName);
  var_dump($name);
  var_dump($f_name);
  var_dump($email);
- var_dump($password);
+ var_dump($pwd);
 
 
 
@@ -58,7 +58,7 @@ if(isset($_POST))
         $fieldValidation= false;
         
     }
-    if($password["is valid"]==false)
+    if($pwd["is valid"]==false)
     {
         
         $fieldValidation= false;
@@ -99,7 +99,7 @@ if(isset($_POST))
             'name'=> $name["message"] ,
             'lname'=>  $f_name["message"] ,
             'email' => $email["message"],
-            'pwd' => $password["message"]
+            'pwd' => $pwd["message"]
         ];
         var_dump($_SESSION['errors'] );
         $url='../pages/signUp.php';

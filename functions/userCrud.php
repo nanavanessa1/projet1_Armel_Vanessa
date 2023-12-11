@@ -6,7 +6,7 @@ function createUser($data)
     global $conn;
 
     // Use prepared statement to prevent SQL injection
-    $query = "INSERT INTO user (user_name, email, password, first_name, last_name, role_id) VALUES (?,?,?,?,?,3)";
+    $query = "INSERT INTO user  VALUES (NULL,?,?,?,?,?,'','','',2)";
 
     $stmt = mysqli_prepare($conn, $query);
 
