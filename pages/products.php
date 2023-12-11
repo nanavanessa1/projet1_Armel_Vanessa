@@ -1,12 +1,12 @@
-<?php
-include_once '../utils/connexion.php';
-include_once '../functions/functions.php';
+<!-- <?php
+// include_once '../utils/connexion.php';
+// include_once '../functions/functions.php';
 
-include_once '../functions/userCrud.php';
+// //include_once '../functions/userCrud.php';
 
-?>
+?> -->
 <?php
-require("functions/userCrud.php");
+require_once("../functions/userCrud.php");
 $mesProduits=afficher();
 ?>
 <!doctype html>
@@ -65,16 +65,16 @@ $mesProduits=afficher();
             <?php foreach($mesProduits as $produit):?>
           <div class="row">
             <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
+              <div class="card mb-4 box-shadow"> <title><?php echo $produit['nom']?></title><rect width="100%" height="100%" fill="#55595c"/><img src="<? echo $produit['image_url']?>">
                 <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><? echo $produit ['description']?></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['quantity']?></button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['prix']?></button>
+                    </div><small class="text-muted"><?echo $produit['quantity']?></small>
+                    <small class="text-muted"><?echo $produit['prix']?></small>
                   </div>
                 </div>
               </div>
@@ -142,38 +142,8 @@ $mesProduits=afficher();
         </div>
 
         <div class="row">
-            <?php
-            // Tableau associatif de produits
-            $products = array(
-                array(
-                    'image' => 'images/image1.JPG',
-                    'price' => '30$',
-                    'name' => 'la vanessai',
-                ),
-                // Ajoutez d'autres produits selon vos besoins
-            );
-
-            // Boucle pour afficher chaque produit
-            foreach ($products as $product) {
-                ?>
-                <div class="col-md-4 mb-4 col-lg-4" style="max-width: 300px;">
-                    <div class="listing-item">
-                        <div class="listing-image">
-                            <img src="<?php echo $product['image']; ?>" alt="Image" class="img-fluid">
-                        </div>
-                        <div class="listing-item-content">
-                            <a href="./pages/product_detail.php" class="bookmark" data-toggle="tooltip" data-placement="left" title="Bookmark">
-                                <span class="fas fa-cart-arrow-down"></span>
-                            </a>
-                            <a class="px-3 mb-3 category" href="#"><?php echo $product['price']; ?></a>
-                            <h2 class="mb-1"><a href="#"><?php echo $product['name']; ?></a></h2>
-                            <span class="address"><address></address></span>
-                        </div>
-                    </div>
-                </div>
-                <?php
-            }
-            ?>
+            
+            
         </div>
     </div>
 </section>
