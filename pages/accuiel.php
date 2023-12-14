@@ -23,6 +23,7 @@ session_start();
         <a href="../profils/profils.php">Profils</a>
         <a href="./contact.php">contact</a>
         <a href="./admin.php">Administration</a>
+        <a href="./admin.php">Deconexion</a>
         <a href="./loginUp.php"><button class="btnLogin-popup">login</button></a>
 
 

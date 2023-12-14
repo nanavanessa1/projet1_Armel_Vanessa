@@ -7,7 +7,11 @@
 ?> -->
 <?php
 require_once("../functions/userCrud.php");
+require_once("../utils/connexion.php");
+
 $mesProduits=afficher();
+var_dump($mesProduits);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -65,17 +69,20 @@ $mesProduits=afficher();
             <?php foreach($mesProduits as $produit):?>
           <div class="row">
             <div class="col-md-4">
-              <div class="card mb-4 box-shadow"> <title><?php echo $produit['nom']?></title><rect width="100%" height="100%" fill="#55595c"/><img src="<? echo $produit['image_url']?>">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+              <div class="card mb-4 box-shadow"> <title><?php echo isset($produit['name'])? $produit['name'] : '' ?></title><rect width="100%" height="100%" fill="#55595c"/>
+              <img src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>">
+                <img class="card-img-top" src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>" alt="Louis vuitton">
                 <div class="card-body">
                   <p class="card-text"><? echo $produit ['description']?></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['quantity']?></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['prix']?></button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['price']?></button>
                     </div><small class="text-muted"><?echo $produit['quantity']?></small>
-                    <small class="text-muted"><?echo $produit['prix']?></small>
+                    <small class="text-muted"><?echo $produit['price']?></small>
+                    
                   </div>
+                  
                 </div>
               </div>
             </div>

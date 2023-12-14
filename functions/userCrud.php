@@ -4,22 +4,29 @@
 function createUser($data)
 {
     global $conn;
+var_dump('Dans mon create user');
+    var_dump($data);
 
     // Use prepared statement to prevent SQL injection
-    $query = "INSERT INTO user  VALUES (NULL,?,?,?,?,?,'','','',2)";
+    $query = "INSERT INTO user (`user_name`, `email`, `pwd`, `fname`, `lname`, `billing_address_id`, `shipping_address_id`, `token`, `role_id`) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     $stmt = mysqli_prepare($conn, $query);
-
+   var_dump($stmt);
     if ($stmt) {
         // Bind parameters
         mysqli_stmt_bind_param(
             $stmt,
-            "sssss",
+            "sssssiisi",
             $data['user_name'],
             $data['email'],
             $data['pwd'],
             $data['fname'],
-            $data['lname']
+            $data['lname'],
+            $data['billing_address_id'],
+            $data['shipping_address_id'],
+            $data['token'],
+            $data['role_id']
         );
 
         // Execute the statement
@@ -101,13 +108,12 @@ function getUserByUsername($user_name)
 
     
 
-    // }
+    
     // products
     function ajouter($image_url, $nom, $prix, $desc, $quantity)
 {
     // Inclure le fichier de connexion
     require_once("../utils/connexion.php");
-
     // Vérifier la connexion
     if (!$conn) {
         die("La connexion à la base de données a échoué : " . mysqli_connect_error());
@@ -143,7 +149,7 @@ function getUserByUsername($user_name)
 
 
 function afficher() {
-    require_once("../utils/connexion.php");
+    global $conn;
 
     // Vérifier la connexion
     if (!$conn) {
@@ -161,10 +167,8 @@ function afficher() {
     // Exécution de la requête préparée
     mysqli_stmt_execute($req);
 
-    // Récupération des données sous forme d'objet
     $result = mysqli_stmt_get_result($req);
 
-    // Récupération des données sous forme d'objet
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     // Fermer la requête préparée
@@ -196,7 +200,6 @@ function afficher() {
             die("Erreur de préparation de la requête : " . mysqli_error($conn));
         }
     
-        // Liaison du paramètre à la requête préparée
         mysqli_stmt_bind_param($req, "i", $id);
     
         // Exécution de la requête préparée
@@ -209,7 +212,6 @@ function afficher() {
             echo "Erreur lors de la suppression du produit : " . mysqli_error($conn);
         }
     
-        // Fermer la requête préparée
         mysqli_stmt_close($req);
     
         // Fermer la connexion à la base de données

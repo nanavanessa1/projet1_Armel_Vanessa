@@ -17,11 +17,11 @@ $name=NameIsValid($_POST["name"]);
 $f_name= f_NameIsValid($_POST["first_name"]);
 $email=EmailIsValid($_POST["email"]);
 $pwd=pwdIsValid($_POST["pwd"]);
- var_dump($userName);
+/*  var_dump($userName);
  var_dump($name);
  var_dump($f_name);
  var_dump($email);
- var_dump($pwd);
+ var_dump($pwd); */
 
 
 
@@ -77,14 +77,14 @@ if(isset($_POST))
             "pwd"=> $encodePwd,
             "fname"=>$_POST["first_name"],
             "lname"=>$_POST["name"],
-          "billing_address_id"=> 100, 
-           " shipping_address_id"=>100,
+            "billing_address_id"=> 1, 
+           "shipping_address_id"=>1,
            "token"=>'bonjour', 
            "role_id"=>3,
         ];
 
         $newUser=createUser($data);
-
+var_dump('j ai bien cree mon user : ');
         var_dump($newUser);
         
     } 
