@@ -110,41 +110,62 @@ function getUserByUsername($user_name)
 
     
     // products
-    function ajouter($image_url, $nom, $prix, $desc, $quantity)
-{
-    // Inclure le fichier de connexion
-    require_once("../utils/connexion.php");
-    // Vérifier la connexion
-    if (!$conn) {
-        die("La connexion à la base de données a échoué : " . mysqli_connect_error());
-    }
+//     function ajouter($image_url, $nom, $prix, $desc, $quantity)
+// {
+//     // Inclure le fichier de connexion
+//     require_once("../utils/connexion.php");
+//     // Vérifier la connexion
+//     if (!$conn) {
+//         die("La connexion à la base de données a échoué : " . mysqli_connect_error());
+//     }
 
-    // Préparer la requête SQL avec des marqueurs de paramètres
-    $req = mysqli_prepare($conn, "INSERT INTO product (name, quantity, price, image_url, description) VALUES (?, ?, ?, ?, ?)");
+//     // Préparer la requête SQL avec des marqueurs de paramètres
+//     $req = mysqli_prepare($conn, "INSERT INTO product (name, quantity, price, image_url, description) VALUES (?, ?, ?, ?, ?)");
 
-    // Vérifier si la préparation de la requête a échoué
-    if (!$req) {
-        die("Erreur de préparation de la requête : " . mysqli_error($conn));
-    }
+//     // Vérifier si la préparation de la requête a échoué
+//     if (!$req) {
+//         die("Erreur de préparation de la requête : " . mysqli_error($conn));
+//     }
 
-    // Liaison des paramètres à la requête préparée
-    mysqli_stmt_bind_param($req, "sddss", $nom, $quantity, $prix, $image_url, $desc);
+//     // Liaison des paramètres à la requête préparée
+//     mysqli_stmt_bind_param($req, "sddss", $nom, $quantity, $prix, $image_url, $desc);
 
-    // Exécution de la requête préparée
-    $result = mysqli_stmt_execute($req);
+//     // Exécution de la requête préparée
+//     $result = mysqli_stmt_execute($req);
 
-    // Vérifier si l'exécution a réussi
-    if ($result) {
-        echo "Le produit a été ajouté avec succès.";
-    } else {
-        echo "Erreur lors de l'ajout du produit : " . mysqli_error($conn);
-    }
+//     // Vérifier si l'exécution a réussi
+//     if ($result) {
+//         echo "Le produit a été ajouté avec succès.";
+//     } else {
+//         echo "Erreur lors de l'ajout du produit : " . mysqli_error($conn);
+//     }
 
-    // Fermer la requête préparée
-    mysqli_stmt_close($req);
+//     // Fermer la requête préparée
+//     mysqli_stmt_close($req);
 
     // Fermer la connexion à la base de données
-    mysqli_close($conn);
+//     mysqli_close($conn);
+// }
+function createProduct($data){
+    global $conn;
+    $query="INSERT into product VALUES(NUll,?,?,?,?,?)";
+    $stmt= mysqli_prepare($conn,$query);
+    var_dump($stmt);
+printf("Error message: %s\n", mysqli_error($conn)); 
+    if($stmt){
+
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sidss",
+            $data['name'],
+            $data['quantity'],
+            $data['price'],
+            $data['img_url'],
+            $data['description']
+        );
+    $result = mysqli_stmt_execute($stmt);
+    }
+    return $result;
 }
 
 

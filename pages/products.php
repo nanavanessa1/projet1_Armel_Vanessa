@@ -46,7 +46,10 @@ var_dump($mesProduits);
   </head>
 
   <body>
-
+  <section class="products">
+    <marquee behavior="alternate">
+        <h1 style="color: navy">COMMANDEZ UNE CHAUSSURE AVEC VOTRE GOUT ICI</h1>
+    </marquee>
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
@@ -67,21 +70,24 @@ var_dump($mesProduits);
         <div class="container">
          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php foreach($mesProduits as $produit):?>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow"> <title><?php echo isset($produit['name'])? $produit['name'] : '' ?></title><rect width="100%" height="100%" fill="#55595c"/>
-              <img src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>">
+          
+            
+              <div class="card mb-7 box-shadow"> <title><?php echo isset($produit['name'])? $produit['name'] : '' ?></title><rect width="50%" height="50%" fill="#55595c"/>
+              
                 <img class="card-img-top" src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>" alt="Louis vuitton">
                 <div class="card-body">
                   <p class="card-text"><? echo $produit ['description']?></p>
                   <div class="d-flex justify-content-between align-items-center">
+                   
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['quantity']?></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary"><?echo $produit['price']?></button>
-                    </div><small class="text-muted"><?echo $produit['quantity']?></small>
-                    <small class="text-muted"><?echo $produit['price']?></small>
-                    
-                  </div>
+                    <a href="#" class="card-link"></a>
+                    <form action="" method="post">
+                     </div>
+                     <small class="text-muted"><?echo $produit['quantity']?></small>
+                    <small class="text-muted"><?echo $produit['price']?> $</small>
+                    <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+            </form>
+                  
                   
                 </div>
               </div>
@@ -89,7 +95,7 @@ var_dump($mesProduits);
             <?php endforeach; ?>
            
             
-                    <small class="text-muted">9 mins</small>
+                    
                   </div>
                 </div>
               </div>
@@ -100,16 +106,7 @@ var_dump($mesProduits);
 
     </main>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-      </div>
-    </footer>
-
+  
     
 </html>
 
@@ -127,29 +124,9 @@ var_dump($mesProduits);
 </head>
 <body>
 
-<section class="products">
-    <marquee behavior="alternate">
-        <h1 style="color: navy">Products</h1>
-    </marquee>
-    <div class="wrapper deux">
-        <div>
-            <h3>Trouve ton prochain</h3>
-            <h2>Article ici</h2>
-        </div>
-    </div>
-</section>
 
-<section class="site-section aos-init aos-animate" id='sticky'>
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center border-primary">
-                <h2 class="font-weight-light text-primary">Nos articles</h2>
-                <p class="color-black-opacity-5">Nos articles les plus demandés</p>
-            </div>
-        </div>
 
-        <div class="row">
-            
+
             
         </div>
     </div>
