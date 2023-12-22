@@ -44,11 +44,11 @@ if(isset($_SESSION['form_signup']['pwd']))
 <header>
     <h2 class="logo"> VANS LUXURY SHOES </h2>
     <nav class="navigation">
-        <a href="#">home</a>
+        <a href="../pages/accuiel.php">home</a>
         <a href="#">About</a>
-        <a href="#">Profils</a>
-        <a href="#">contact</a>
-        <a href="./loginUp.php"><button class="btnLogin-popup">login</button></a>
+        <a href="../pages/gestionUser.php">Profils</a>
+        <a href="../pages/contact">contact</a>
+        <a href="../pages/loginUp.php"><button class="btnLogin-popup">login</button></a>
 
 
 
@@ -68,18 +68,18 @@ if(isset($_SESSION['form_signup']['pwd']))
 
 </div>
 <div>
-<label for="name">Nom</label>
-<input type="text" name="name" id="name" value="<?php echo $name ?>"> 
-<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['name'])? $_SESSION['errors']['name'] : '' 
+<label for="name">Prenom</label>
+<input type="text" name="lname" id="lname" value="<?php echo $name ?>"> 
+<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['lname'])? $_SESSION['errors']['lname'] : '' 
 
 ?></p>
 
 
 </div>
 <div>
-<label for="first_name">Prenom</label>
+<label for="first_name">Nom</label>
 <input type="text" name="first_name" id="first_name" value="<?php echo $fname ?>"> 
-<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['lname'])? $_SESSION['errors']['lname'] : '' ?></p>
+<p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['fname'])? $_SESSION['errors']['fname'] : '' ?></p>
 
 </div>
 <div>
@@ -90,7 +90,7 @@ if(isset($_SESSION['form_signup']['pwd']))
 
 </div>
 <div>
-<label for="pwd">mot de passe </label>
+<label for="pwd">Mot de passe </label>
 <input type="password" name="pwd" id="pwd" value="<?php echo $pwd ?>"> 
 <p style="color: red; font-size: 0.8rem;"><?php echo isset($_SESSION['errors']['pwd'])? $_SESSION['errors']['pwd'] : '' ?></p>
 

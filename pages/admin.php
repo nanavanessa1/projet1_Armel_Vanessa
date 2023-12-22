@@ -12,7 +12,7 @@
     <header class="titleCommand">
         <h2 class="logo">Logo</h2>
         <nav class="navigation">
-            <a href="../index.html">Acceuil</a>
+            <a href="../index.html">Accueil</a>
             <a href="#">Apropos</a>
             <a href="#">Articles</a>
             <a href="#">Contact</a>
@@ -28,7 +28,7 @@
                         <input type="text" class="form-control" name="email">
                     </div>
                     <div class="form-group">
-                        <label>Mot de pass</label>
+                        <label>Mot de passe</label>
                         <input type="text" class="form-control" name="password">
                     </div>
                     <div class="form-group">

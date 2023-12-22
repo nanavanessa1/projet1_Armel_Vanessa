@@ -22,8 +22,8 @@ $mesProduits=afficher()
     <div class="container-fluid">
       
     <a class="navbar-brand" href="#">
-      <img src="../styles/img.jpg" alt="Logo" width="60" height="50" class="d-inline-block align-text-top">
-       <h2 class="logo">Dussollier</h2>
+      <img src="../styles/img.jpg" alt="VANS SHOES" width="60" height="50" class="d-inline-block align-text-top">
+       <h2 class="logo">VANS SHOES</h2>
     </a>
   </div>
    
@@ -36,13 +36,13 @@ $mesProduits=afficher()
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../pages/accueil1.php"><button type="button" class="btn btn-primary">Home</button></a>
+          <a class="nav-link active" aria-current="page" href="../pages/accuiel.php"><button type="button" class="btn btn-primary">Home</button></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./update_deleteProducts.php"><button type="submit" class="btn btn-primary">gestion de produit</button></a>
+          <a class="nav-link" href="./gestionProduit.php"><button type="submit" class="btn btn-primary">Gestion de produit</button></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../pages/update_deleteProducts.php"><button type="submit" class="btn btn-primary">Cliquer ici pour modifier un produit</button></a>
+          <a class="nav-link" href="../pages/update_deleteProducts.php"><button type="submit" class="btn btn-primary">Cliquez ici pour modifier un produit</button></a>
         </li>
         
        
@@ -90,31 +90,19 @@ $mesProduits=afficher()
     
     <tr>
       <?php foreach( $mesProduits as $produit) {?>
-      <th scope="row"><?php echo $produit[0]?></th>
-      <td><?php echo $produit[1]?></td>
-      <td><?php echo $produit[2]?></td>
-      <td><?php echo $produit[3]?></td>
-      <td><img  src="<?php echo $produit[4] ?>" class="card-img-top" alt="..."  style="width: 9rem;"></td>
-      <td><?php echo $produit[5]?></td>
+      <th scope="row"><?php echo isset($produit['id'])? $produit['id'] : '' ?>></th>
+      <td><?php echo isset($produit['name']) ? $produit['name'] : '' ?></td>
+      <td><?php echo isset($produit['quantity']) ? $produit['quantity'] : '' ?></td>
+      <td><?php echo isset($produit['price']) ? $produit['price'] : '' ?></td></td>
+      <td><img  src="<?php echo isset($produit['img_url']) ? $produit['img_url'] : '' ?>" class="card-img-top" alt="..."  style="width: 9rem;"></td>
+      <td><?php echo isset($produit['description'])? $produit['description'] : ''?></td>
 
         
      </tr>
     
   </tbody> <?php }?>
 </table>
-    <?php  foreach($mesProduits as $produit){ ?>
-    <div class="col">
-          <div class="card shadow-sm" style="width: 12rem;">
-            
-            <img src="<?php echo $produit[4] ?>" class="card-img-top" alt="...">
-            <text x="50%" y="50%" fill="#eceeef" dy=".3em"> <H3><?php echo $produit[1] ?></H3></text>
-            <div class="card-body">
-              <p class="card-text"><?php echo $produit[5] ?> </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-body-secondary">ID =<?php echo $produit[0] ?> </small>
-                <div class="btn-group">
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">acheter</button> -->
-                  <a href="#" class="card-link"></a>
+    
 
                   
 
@@ -126,7 +114,7 @@ $mesProduits=afficher()
           </div>
 
         </div>
-    <?php }?></div>
+    <?php ?></div>
     
     <div>
 

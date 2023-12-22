@@ -2,8 +2,8 @@
     session_start();
     require_once('../utils/connexion.php');
   require_once('../functions/usercrud.php');
-$mesProduits=afficherProduct();
-//var_dump($myProduct);
+$mesProduits=afficher();
+var_dump($mesProduits);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,22 +25,11 @@ $mesProduits=afficherProduct();
     <div class="container-fluid">
       
     <a class="navbar-brand" href="#">
-      <img src="../styles/img.jpg" alt="Logo" width="60" height="50" class="d-inline-block align-text-top">
+      <img src="../styles/front.jpg" alt="Logo" width="60" height="50" class="d-inline-block align-text-top">
        <h2 class=logo>"VANS SHOES" </h2>
     </a>
   </div>
-    <!-- <nav class="navigation">
-    <a href="../pages/gestionProduit.php"><button type="submit" class="btn btn-primary">gestion de produit</button></a>
-    <a href="./deleteProduct.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a> -->
-        <!-- <a href="">home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">contact</a> -->
-        <!-- <a href="../pages/accueil1.php"><button class="btnLogin-popup">home</button></a> -->
-
-
-
-    <!-- </nav> -->
+    
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     
@@ -50,13 +39,13 @@ $mesProduits=afficherProduct();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../pages/accueil1.php"><button type="button" class="btn btn-primary">Home</button></a>
+          <a class="nav-link active" aria-current="page" href="../pages/accuiel.php"><button type="button" class="btn btn-primary">Accuiel</button></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./gestionProduit.php"><button type="submit" class="btn btn-primary">gestion de produit</button></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./deleteProduct.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>
+          <a class="nav-link" href="./deleteProducts.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>
         </li>
         
        
@@ -76,28 +65,7 @@ $mesProduits=afficherProduct();
 <form action="../results/updateResult.php" method="post">
 <div class="mb-3">
     <label for="id" class="form-label">Quel est le produit a modifier ?</label>
-    <input type="text" name="id" class="form-control" id="id" aria-describedby="emailHelp">
-    <p style="color: red; font-size: 0.8rem;"><?php echo  isset($_SESSION['errorUpdate']['id'])? $_SESSION['errorUpdate']['id'] : ''?> </p>
-  <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
-  </div>
-  <div class="mb-3">
-    <label for="quantity" class="form-label">quantite</label>
-    <input type="text" class="form-control" id="quantity" name="quantity" >
-  </div>
-  <div class="mb-3">
-    <label for="price" class="form-label">prix</label>
-    <input type="text" class="form-control" id="price" name="price"  >
-  </div>
-  <div class="mb-3">
-    <label for="img_url" class="form-label">image_url</label>
-    <input type="text" class="form-control" id="img_url"name="img_url"  >
-  </div>
-  <div class="mb-3">
-    <label for="description" class="form-label">description</label>
-    <input type="text" class="form-control" id="description" name="description" >
-  </div>
+    
 
   <button type="submit" class="btn btn-primary">modifier un produit</button>
   <p></p>
@@ -106,9 +74,7 @@ $mesProduits=afficherProduct();
  
  
 </form> 
-<!-- <div>
- <a href="./deleteProduct.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>   
-</div> -->
+
     </div>
 
     
@@ -130,42 +96,29 @@ $mesProduits=afficherProduct();
     
     <tr>
       <?php foreach( $mesProduits as $produit) {?>
-      <th scope="row"><?php echo $product[0]?></th>
-      <td><?php echo $produit[1]?></td>
-      <td><?php echo $produit[2]?></td>
-      <td><?php echo $produit[3]?></td>
-      <td><img src="<?php echo $produit[4] ?>" class="card-img-top" alt="..." style="width: 9rem;"></td>
-      <td><?php echo $produit[5]?></td>
+      <th scope="row"><?php echo $produit['id']?></th>
+      <td><?php echo $produit['name']?></td>
+      <td><?php echo $produit['quantity']?></td>
+      <td><?php echo $produit['price']?></td>
+      <td><?php echo $produit['img_url']?></td>
+      <td><?php echo $produit['description']?></td>
+    
+      
 
         
      </tr>
     
   </tbody> <?php }?>
+  <button type="submit" class="btn btn-primary">modifier un produit</button>
 </table>
 
 
-    <?php  foreach($mesProduits as $produit){ ?>
-    <div class="col">
-          <div class="card shadow-sm" >
-            
-            <img src="<?php echo $produit[4] ?>" class="card-img-top" alt="...">
-            <text x="50%" y="50%" fill="#eceeef" dy=".3em"> <H3><?php echo $produit[1] ?></H3></text>
-            <div class="card-body">
-              <p class="card-text"><?php echo $produit[5] ?> </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-body-secondary">ID =<?php echo $produit[0] ?> </small>
-                <div class="btn-group">
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">acheter</button> -->
-                  <a href="#" class="card-link"></a>
-
-                </div>
-                
-              </div>
+    
             </div>
           </div>
 
         </div>
-    <?php }?></div>
+    <?php ?></div>
     
     <div>
 

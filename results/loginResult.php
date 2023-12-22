@@ -4,24 +4,16 @@ require_once('../functions/functions.php');
 require_once('../utils/connexion.php');
 require_once('../functions/validation.php');
 session_start();
-var_dump($_POST);
 $userName=userNameExist($_POST["user_name"]);
-var_dump($userName);
-
-
-
-
-
 if (isset($_POST)){
     unset($_SESSION['errorLogin']);
     $fieldExist=true;
     if(empty($_POST['user_name'] and $_POST['pwd'])){
 
-     $url='../pages/login.php';
+     $url='../pages/loginUp.php';
         header('location:'.$url);
     }if($userName['exist']==false) {
-    
-        $fieldExist=false;
+     $fieldExist=false;
    }if($fieldExist==true){
         $userData= getUserByUsername( $_POST['user_name']);
     
@@ -32,9 +24,9 @@ if (isset($_POST)){
                 echo '</br></br>Mon token : </br>';
                 
                 var_dump($token);
-                //enregistrer le token en Session et dans la DB
+                
 
-                echo "C'est le bon mot de passe ";
+                echo " le bon mot de passe est correct";
                 $data=[
                     'user_name'=>$userData['user_name'],
                     'token'=>$token
@@ -54,7 +46,7 @@ if (isset($_POST)){
                 
                 $_SESSION['errorLogin'] =[
                     'user_name' => $userName['message'],
-                    'pwd' => 'mot de passe incorrect '];
+                    'pwd' => 'Mot de passe incorrect '];
                     
                     $url='../pages/loginUp.php';
                     header('location:'.$url);
@@ -66,10 +58,9 @@ if (isset($_POST)){
     }else{
          $_SESSION['errorLogin'] =[
             'user_name' => $userName['message'],
-             'pwd' => 'mot de passe incorrect '];
-        
-            $url='../pages/loginUp.php';
-            header('location:'.$url);
+            'pwd' => 'Mot de passe incorrect '];
+             $url='../pages/loginUp.php';
+             header('location:'.$url);
     }
 } else{
    
@@ -77,10 +68,5 @@ if (isset($_POST)){
     header('location:'.$url);
 }
 
-
-
-
-
-
-
 ?>
+<a href="../pages/accuiel.php"> ACCUIEL</a>

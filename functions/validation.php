@@ -1,7 +1,4 @@
 <?php    
-
-
-
 function userNameIsValid($data)
 {
     $length = strlen($data);
@@ -134,6 +131,48 @@ return $reponse;
 
 
 }
+function userProductExist($data){
+    $userInDB = getProductById($data);
+    $reponse = [
+        'exist'=>false,   
+        'message' => 'ce produit n existe pas '
+    ];
+    if ($userInDB) {
+        $reponse = [
+            'exist'=>true,
+            'message' => ''
+        ];
+    }else{
+        $reponse = [
+            'exist'=>false,
+            'message' => 'ce produit n existe pas '
+        ];
+    }
+
+return $reponse;
+}
+function userProductExistByName($data){
+    $userInDB = getProductByName($data);
+    //var_dump($userInDB);
+    $reponse = [
+        'exist'=>false,   
+        'message' => 'ce produit n existe pas '
+    ];
+    if ($userInDB) {
+        $reponse = [
+            'exist'=>true,
+            'message' => ''
+        ];
+    }else{
+        $reponse = [
+            'exist'=>false,
+            'message' => 'ce produit n existe pas '
+        ];
+    }
+
+return $reponse;
+}
+
 
 function userNameExist($data){
     $userInDB = getUserByUsername($data);

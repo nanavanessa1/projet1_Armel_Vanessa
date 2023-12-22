@@ -1,32 +1,24 @@
 <a href="../">Accueil</a>
+
 <?php
 require_once('../functions/functions.php');
 require_once('../functions/usercrud.php');
 require_once('../functions/validation.php');
 require_once('../utils/connexion.php');
-//require_once('../templates/footer.php');
 session_start();
 
+$_SESSION['user_name']=$_POST["user_name"];
+$_SESSION['name']=$_POST["lname"];
+$_SESSION['first_name']=$_POST["first_name"];
+$_SESSION['email']=$_POST["email"];
 
-
-
-
-
+// declarations de nos variables
 $userName=userNameIsValid($_POST["user_name"]);
-$name=NameIsValid($_POST["name"]);
+$name=NameIsValid($_POST["lname"]);
 $f_name= f_NameIsValid($_POST["first_name"]);
 $email=EmailIsValid($_POST["email"]);
-$pwd=pwdIsValid($_POST["pwd"]);
-/*  var_dump($userName);
- var_dump($name);
- var_dump($f_name);
- var_dump($email);
- var_dump($pwd); */
-
-
-
-
-//var_dump($userName);
+$password=pwdIsValid($_POST["pwd"]);
+ 
 
 if(isset($_POST))
 {
@@ -35,15 +27,16 @@ if(isset($_POST))
     unset($_SESSION['errors']);
     $fieldValidation=true;
 
-    if (empty($_POST["user_name"] and $_POST["name"] and $_POST["first_name"] and $_POST["email"] and $_POST["pwd"]))
+    if (empty($_POST["user_name"] and $_POST["lname"] and $_POST["first_name"] and $_POST["email"] and $_POST["pwd"]))
     {
         $url='../pages/signUp.php';
-        header('location:'.$url);
+       
     }
     if($userName["is valid"]== false)
     {
-        $fieldValidation= false;
-    }if($name["is valid"]== false)
+    $fieldValidation= false;
+    }
+    if($name["is valid"]== false)
     {
         $fieldValidation= false;
         
@@ -58,7 +51,7 @@ if(isset($_POST))
         $fieldValidation= false;
         
     }
-    if($pwd["is valid"]==false)
+    if($password["is valid"]==false)
     {
         
         $fieldValidation= false;
@@ -76,34 +69,35 @@ if(isset($_POST))
             "email"=>$_POST["email"],
             "pwd"=> $encodePwd,
             "fname"=>$_POST["first_name"],
-            "lname"=>$_POST["name"],
-            "billing_address_id"=> 1, 
+            "lname"=>$_POST["lname"],
+           "billing_address_id"=> 1, 
            "shipping_address_id"=>1,
            "token"=>'bonjour', 
            "role_id"=>3,
         ];
 
         $newUser=createUser($data);
-var_dump('j ai bien cree mon user : ');
+
         var_dump($newUser);
+        $url='../pages/loginUp.php';
         
     } 
    
     else
     {
 
-        var_dump("La validation n'est pas valide");
+        var_dump("ma validation est fausse");
 
         $_SESSION['errors'] =[
             'user_name' => $userName["message"],
             'name'=> $name["message"] ,
             'lname'=>  $f_name["message"] ,
             'email' => $email["message"],
-            'pwd' => $pwd["message"]
+            'pwd' => $password["message"]
         ];
         var_dump($_SESSION['errors'] );
         $url='../pages/signUp.php';
-        header('location:'.$url);
+        
     };
 
 } 
@@ -114,4 +108,4 @@ header('location:'.$url);
 }
 
 ?>
-<a href="../pages/signUp.php">GO BACKWARD </a>
+<a href="../pages/loginUp.php"> CONNEXION </a>

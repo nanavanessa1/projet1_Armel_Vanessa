@@ -20,10 +20,11 @@ session_start();
 
     <nav class="navigation">
         <a href="../pages/products.php">Products</a>
-        <a href="../profils/profils.php">Profils</a>
+    
         <a href="./contact.php">contact</a>
-        <a href="./admin.php">Administration</a>
-        <a href="./admin.php">Deconexion</a>
+        <a href="./gestionUser.php">User management</a>
+        <a href="./product_detail.php">Product Management</a>
+        <a href="./deconnexion.php">Deconexion</a>
         <a href="./loginUp.php"><button class="btnLogin-popup">login</button></a>
 
 

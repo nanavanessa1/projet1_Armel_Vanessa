@@ -1,16 +1,10 @@
-<!-- <?php
-// include_once '../utils/connexion.php';
-// include_once '../functions/functions.php';
-
-// //include_once '../functions/userCrud.php';
-
-?> -->
+  
 <?php
 require_once("../functions/userCrud.php");
 require_once("../utils/connexion.php");
 
 $mesProduits=afficher();
-var_dump($mesProduits);
+
 
 ?>
 <!doctype html>
@@ -22,7 +16,7 @@ var_dump($mesProduits);
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+   
 
    
     <!doctype html>
@@ -48,7 +42,7 @@ var_dump($mesProduits);
   <body>
   <section class="products">
     <marquee behavior="alternate">
-        <h1 style="color: navy">COMMANDEZ UNE CHAUSSURE AVEC VOTRE GOUT ICI</h1>
+        <h1 style="color: navy">COMMANDEZ UNE CHAUSSURE A VOTRE GOUT ICI</h1>
     </marquee>
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
@@ -56,9 +50,7 @@ var_dump($mesProduits);
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
             <strong>PRODUCTS</strong>
           </a>
-          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button> -->
+          
         </div>
       </div>
     </header>
@@ -69,12 +61,13 @@ var_dump($mesProduits);
       <div class="album py-5 bg-light">
         <div class="container">
          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
             <?php foreach($mesProduits as $produit):?>
           
             
               <div class="card mb-7 box-shadow"> <title><?php echo isset($produit['name'])? $produit['name'] : '' ?></title><rect width="50%" height="50%" fill="#55595c"/>
               
-                <img class="card-img-top" src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>" alt="Louis vuitton">
+                <img class="card-img-top" src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>" alt="">
                 <div class="card-body">
                   <p class="card-text"><? echo $produit ['description']?></p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -83,8 +76,8 @@ var_dump($mesProduits);
                     <a href="#" class="card-link"></a>
                     <form action="" method="post">
                      </div>
-                     <small class="text-muted"><?echo $produit['quantity']?></small>
-                    <small class="text-muted"><?echo $produit['price']?> $</small>
+                     <small class="text-muted"><?echo isset ($produit['price'])? $produit['price'] : ''?></small>
+     
                     <button type="submit" class="btn btn-primary">Ajouter au panier</button>
             </form>
                   

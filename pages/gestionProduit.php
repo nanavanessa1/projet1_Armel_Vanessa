@@ -1,8 +1,6 @@
-<?php
-session_start();
-require_once('../utils/connexion.php');
-require_once('../functions/usercrud.php');
-$mesProduits=afficher();
+<?php 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +12,7 @@ $mesProduits=afficher();
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
+   
 </head>
 <body>
 
@@ -26,7 +25,8 @@ $mesProduits=afficher();
        <h2 class="logo">VANS SHOES</h2>
     </a>
   </div>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       
   <div class="container-fluid">
     
@@ -36,14 +36,14 @@ $mesProduits=afficher();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="../pages/accueil.php"><button type="button" class="btn btn-primary">Accuiel</button></a>
+          <a class="nav-link active" aria-current="page" href="../pages/accuiel.php"><button type="button" class="btn btn-primary">ACCuiel</button></a>
          
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../pages/deleteProducts.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>
+          <a class="nav-link" href="./deleteProducts.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../pages/product_detail.php"><button type="submit" class="btn btn-primary">Cliquer ici pour modifier un produit</button></a>
+          <a class="nav-link" href="../pages/update_deleteProduct.php"><button type="submit" class="btn btn-primary">Cliquer ici pour modifier un produit</button></a>
         </li>
         
        
@@ -62,7 +62,7 @@ $mesProduits=afficher();
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 <form action="../results/gestionProducts.php" method="post">
   <div class="mb-3">
-    <label for="name" class="form-label">Nom Produit</label>
+    <label for="name" class="form-label">Name</label>
     <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
@@ -89,10 +89,6 @@ $mesProduits=afficher();
  
  
 </form> 
-
-<!-- <div>
- <a href="./deleteProduct.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>   
-</div> -->
     </div>
   
 
@@ -102,3 +98,4 @@ $mesProduits=afficher();
     
 </body>
 </html>
+ 
