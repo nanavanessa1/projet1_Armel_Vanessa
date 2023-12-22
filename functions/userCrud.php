@@ -184,7 +184,14 @@ function getProductById( $id)
     $data = mysqli_fetch_assoc($result);
     return $data;
 }
- 
+function getProductByIdPannier($id)
+{
+    global $conn;
+    $query = "SELECT * FROM product WHERE id = '$id' ;";
+    $result = mysqli_query($conn, $query);
+    $data = mysqli_fetch_assoc($result);
+    return $data;
+}
  function updateProduct($data){
     global $conn;
     $query= "UPDATE product SET name=?,quantity=?,price=?,img_url=?,description=? WHERE id=?";

@@ -24,7 +24,6 @@ session_start();
         <a href="./contact.php">contact</a>
         <a href="./gestionUser.php">User management</a>
         <a href="./product_detail.php">Product Management</a>
-        <a href="./deconnexion.php">Deconexion</a>
         <a href="./loginUp.php"><button class="btnLogin-popup">login</button></a>
 
 
