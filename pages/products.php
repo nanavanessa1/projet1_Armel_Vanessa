@@ -18,18 +18,19 @@ if(isset( $_SESSION['panier'][$i]))
    
  
   $_SESSION['panier'][$i]++;
-} else{  
+}
+ 
+else
+{  
   
   $_SESSION['panier'][$i]=1;
  
 
 }
 
-$url='../pages/cart.php';
+$url="../pages/cart.php";
     header('location:'.$url);
 }
-
- 
 
 }
 
@@ -37,7 +38,7 @@ require_once("../functions/userCrud.php");
 require_once("../utils/connexion.php");
 
 $mesProduits=afficher();
-
+var_dump($mesProduits);
 
 ?>
 <!doctype html>
@@ -194,12 +195,7 @@ $mesProduits=afficher();
   <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
     <span class="visually-hidden">New alerts</span>
   </span>
-</button></a></h4>
-
-          <ul class="list-unstyled">
-          <?php if(empty ($_POST['img'])) {
-            
-          }?>
+</button></a>
          
         </div>
       </div>
@@ -209,7 +205,6 @@ $mesProduits=afficher();
     <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
 
-        <strong><img src="../images/" alt="Logo" width="150" height="100" class="d-inline-block align-text-top"></strong>
       </a>
       
       
@@ -271,64 +266,125 @@ $mesProduits=afficher();
         <div class="container">
          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-            <?php foreach($mesProduits as $produit){?>
-          
-            
-              <div class="card mb-7 box-shadow"> <title><?php echo isset($produit['name'])? $produit['name'] : '' ?></title><rect width="50%" height="50%" fill="#55595c"/>
-              
-                <img class="card-img-top" src="../images/<?php echo isset($produit['img_url'])? $produit['img_url'] : '' ?>" alt="">
-                <div class="card-body">
-                  <p class="card-text"><? echo $produit ['description']?></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                   
-                    <div class="btn-group">
-                    <a href="#" class="card-link"></a>
-                    <form action="" method="post">
-                     </div>
-                     <small class="text-muted"><?echo isset ($produit['price'])? $produit['price'] : ''?>$</small>
-                     <form action="" method="post">
-                  <input type="text" hidden name="action" value="addToCart">
+         <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="../styles/luxe.jpg"> <!-- Include your own stylesheet for additional styling -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        main {
+            padding: 20px;
+        }
 
-                  <input type="text" hidden name="id" value="<?php echo $produit['quantity'] ?>">
-                
-                    <button type="submit" class="btn btn-primary">Ajouter au panier</button>
-            </form>
-                  
-                  
+        .card {
+            margin-bottom: 50px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            object-fit: cover;
+            height: 100px; /* Adjust the height as needed */
+            width:100px
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #555;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .badge {
+            margin-right: 5px;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($mesProduits as $produit) : ?>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="../images/<?php echo isset($produit['img_url']) ? $produit['img_url'] : '' ?>" alt="<?php echo isset($produit['name']) ? $produit['name'] : '' ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo isset($produit['name']) ? $produit['name'] : '' ?></h5>
+                            <p class="card-text "><?php echo isset($produit['description']) ? $produit['description'] : '' ?></p>
+                                    <span class="price"><?php echo isset($produit['price']) ? $produit['price'] . '$' : '' ?></span>
+                                    <form action="../pages/cart.php" method="">
+                                        <input type="text" hidden name="action" value="addToCart">
+                                        <input type="text" hidden name="id" value="<?php echo $produit['id'] ;?>">
+                                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <?php } ?>
-           
-            
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </main>
-
-  
-    
-</html>
-
-
-
-
-            
+            <?php endforeach; ?>
         </div>
     </div>
-</section>
+</main>
 
 </body>
-</html>
-    </section>
-</main>
+  
+    
 
 
 

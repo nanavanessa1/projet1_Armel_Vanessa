@@ -21,7 +21,7 @@
     <div class="container-fluid">
       
     <a class="navbar-brand" href="#">
-      <img src="../styles/img.jpg" alt="Logo" width="60" height="50" class="d-inline-block align-text-top">
+     
        <h2 class="logo">VANS SHOES</h2>
     </a>
   </div>

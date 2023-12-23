@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/style.css"> <!-- Include your own stylesheet for additional styling -->
+    <link rel="stylesheet" href="../styles/style.css"> 
 </head>
 <body>
 
 <header class="bg-primary text-white">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="../images/logo.png" alt="Logo" width="150" height="120" class="d-inline-block align-text-top">
+            <img src="../images/shopping.png" alt="Shopping cart" width="150" height="120" class="d-inline-block align-text-top">
             <h2 class="logo">VANS SHOES</h2>
         </a>
     </div>
@@ -26,7 +26,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="../pages/products.php">
-                            <button type="button" class="btn btn-light">Boutique</button>
+                            <button type="button" class="btn btn-light">Shop</button>
                         </a>
                     </li>
                 </ul>
@@ -52,19 +52,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($panier as $key => $product) {
+                        <?php foreach ($panier as $key => $produit) {
                             $pannierID = getProductByIdPannier($key);
-                            $total += $pannierID['price'] * $product;
+                            $total += $pannierID['price'] * $produit;
                         ?>
                             <tr>
                                 <td><?php echo $pannierID['name']; ?></td>
-                                <td><?php echo $product; ?></td>
+                                <td><?php echo $produit; ?></td>
                                 <td>
                                     <img src="<?php echo $pannierID['img_url']; ?>" class="card-img-top" alt="..." style="width: 9rem;">
                                 </td>
-                                <td><?php echo $pannierID['price'] * $product; ?>$ CAD</td>
+                                <td><?php echo $pannierID['price'] * $produit; ?>$ CAD</td>
                                 <td>
-                                    <form action="" method="post">
+                                    <form action="" method="">
                                         <input type="text" hidden name="id" value="<?php echo $key; ?>">
                                         <button type="submit" class="btn btn-danger">
                                             <img src="../styles/delete-icon.png" class="card-img-top" alt="..." style="width: 3rem;">
@@ -87,8 +87,7 @@
         </div>
     <?php } else {
         echo '<p class="text-center">Le panier est vide</p>';
-        $url = '../pages/products.php';
-        header('location:' . $url);
+       
     } ?>
 </div>
 

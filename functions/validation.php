@@ -153,7 +153,7 @@ return $reponse;
 }
 function userProductExistByName($data){
     $userInDB = getProductByName($data);
-    //var_dump($userInDB);
+    
     $reponse = [
         'exist'=>false,   
         'message' => 'ce produit n existe pas '

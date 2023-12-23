@@ -22,7 +22,7 @@ $mesProduits=afficher();
     <div class="container-fluid">
       
     <a class="navbar-brand" href="#">
-      <img src="../styles/img.jpg" alt="Logo" width="60" height="50" class="d-inline-block align-text-top">
+
        <h2 class="logo">VANS SHOES</h2>
     </a>
   </div>
@@ -90,9 +90,6 @@ $mesProduits=afficher();
  
 </form> 
 
-<!-- <div>
- <a href="./deleteProduct.php"><button type="submit" class="btn btn-primary">Cliquer ici pour supprimer un produit</button></a>   
-</div> -->
     </div>
   
 
